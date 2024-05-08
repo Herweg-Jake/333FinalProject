@@ -1,0 +1,22 @@
+name: Docker Container CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Build Docker Image
+      run: docker build -t 333_finalproj .
+
+    - name: Run Docker Container
+      run: docker run 333_finalproj
